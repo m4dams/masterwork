@@ -1,0 +1,684 @@
+{
+  "info": {
+    "_postman_id": "afaef1ae-7f98-4305-a01d-b89a0230af5f",
+    "name": "Library",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "register",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"username\":\"desiredUserName\",\r\n    \"email\": \"email\",\r\n    \"firstName:\":\"firstName\",\r\n    \"lastName\": \"lastName\",\r\n    \"dateOfBirth\":\"dateOfBirth\",\r\n    \"mothersName\":\"mothersName\",\r\n    \"address\": {\r\n        \"county\":\"county\",\r\n        \"city\":\"city\",\r\n        \"streetAndbuilding\": \"streetAndbuilding\"\r\n    },\r\n    \"password\":\"password\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "/register",
+          "path": [
+            "register"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "register",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"desiredUserName\",\r\n    \"email\": \"email\",\r\n    \"firstName:\": \"firstName\",\r\n    \"lastName\": \"lastName\",\r\n    \"dateOfBirth\": \"dateOfBirth\",\r\n    \"mothersName\": \"mothersName\",\r\n    \"address\": {\r\n        \"county\": \"county\",\r\n        \"city\": \"city\",\r\n        \"streetAndbuilding\": \"streetAndbuilding\"\r\n    }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "/register",
+              "path": [
+                "register"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": null,
+          "cookie": [],
+          "body": "{\n    \"username\": \"username\"\n}"
+        },
+        {
+          "name": "missing field",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"desiredUserName\",\r\n    \"email\": \"\",\r\n    \"firstName:\": \"firstName\",\r\n    \"lastName\": \"lastName\",\r\n    \"dateOfBirth\": \"dateOfBirth\",\r\n    \"mothersName\": \"mothersName\",\r\n    \"address\": {\r\n        \"county\": \"county\",\r\n        \"city\": \"city\",\r\n        \"streetAndbuilding\": \"streetAndbuilding\"\r\n    },\r\n    \"password\": \"password\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "/register",
+              "path": [
+                "register"
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": null,
+          "cookie": [],
+          "body": "{\r\n    \"status\" : \"error\",\r\n    \"message\": \"<field> is required\"\r\n}"
+        },
+        {
+          "name": "already taken",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"desiredUserName\",\r\n    \"email\": \"email\",\r\n    \"firstName:\": \"firstName\",\r\n    \"lastName\": \"lastName\",\r\n    \"dateOfBirth\": \"dateOfBirth\",\r\n    \"mothersName\": \"mothersName\",\r\n    \"address\": {\r\n        \"county\": \"county\",\r\n        \"city\": \"city\",\r\n        \"streetAndbuilding\": \"streetAndbuilding\"\r\n    },\r\n    \"password\": \"password\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "/register",
+              "path": [
+                "register"
+              ]
+            }
+          },
+          "status": "Conflict",
+          "code": 409,
+          "_postman_previewlanguage": "json",
+          "header": null,
+          "cookie": [],
+          "body": "{\r\n    \"status\": \"error\",\r\n    \"message\" : \"Username/email already registered\"\r\n}"
+        },
+        {
+          "name": "password short",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\":\"desiredUserName\",\r\n    \"email\": \"email\",\r\n    \"firstName:\":\"firstName\",\r\n    \"lastName\": \"lastName\",\r\n    \"dateOfBirth\":\"dateOfBirth\",\r\n    \"mothersName\":\"mothersName\",\r\n    \"address\": {\r\n        \"county\":\"county\",\r\n        \"city\":\"city\",\r\n        \"streetAndbuilding\": \"streetAndbuilding\"\r\n    },\r\n    \"password\": \"pass\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "/register",
+              "path": [
+                "register"
+              ]
+            }
+          },
+          "status": "Not Acceptable",
+          "code": 406,
+          "_postman_previewlanguage": "json",
+          "header": null,
+          "cookie": [],
+          "body": "{\n    \"status\": \"error\",\n    \"message\": \"Password must be 8 characters.\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "login",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"username\": \"user\",\r\n    \"password\": \"password\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "/login",
+          "path": [
+            "login"
+          ]
+        },
+        "description": "Sending user credentials and receiving a token if authentication succeeded."
+      },
+      "response": [
+        {
+          "name": "missing parameter",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "/login",
+              "path": [
+                "login"
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": null,
+          "header": null,
+          "cookie": [],
+          "body": "{\r\n    \"status\":  \"error\",\r\n    \"message\": \"<parameter> is required\"\r\n}"
+        },
+        {
+          "name": "wrong username",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"wrongUser\",\r\n    \"password\": \"password\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "/login",
+              "path": [
+                "login"
+              ]
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "_postman_previewlanguage": null,
+          "header": null,
+          "cookie": [],
+          "body": "{\r\n    \"status\":  \"error\",\r\n    \"message\": \"wrong username or password\"\r\n}"
+        },
+        {
+          "name": "wrong password",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"user\",\r\n    \"password\": \"wrongPassword\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "/login",
+              "path": [
+                "login"
+              ]
+            }
+          },
+          "code": 401,
+          "_postman_previewlanguage": null,
+          "header": null,
+          "cookie": [],
+          "body": "{\r\n    \"status\":  \"error\",\r\n    \"message\": \"wrong username or password\"\r\n}"
+        },
+        {
+          "name": "correct login",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"user\",\r\n    \"password\": \"password\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "/login",
+              "path": [
+                "login"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": null,
+          "cookie": [],
+          "body": "{\r\n    \"status\":  \"ok\",\r\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2NTI4ODU0NDUsImV4cCI6MTY4NDQyMTQ0NSwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsInVzZXJJZCI6IjEifQ.LTb_-WTmsoMa8oAhdGQeoSVzXvaOChm8V9IMJ2NMyJE\"\r\n}"
+        }
+      ]
+    },
+    {
+      "name": "search",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"title\": \"titleString\",\r\n    \"author\": \"authorString\",\r\n    \"year\": 1987\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "/search",
+          "path": [
+            "search"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "book available",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"titleString\",\r\n    \"author\": \"authorString\",\r\n    \"year\": 1987\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "/search",
+              "path": [
+                "search"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": null,
+          "cookie": [],
+          "body": "{\r\n    \"author\":\"author\",\r\n    \"title\": \"title\",\r\n    \"publisher\": \"publisher\",\r\n    \"releaseYear\": 1987,\r\n    \"available\": 2\r\n}"
+        },
+        {
+          "name": "book currently not available",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"titleString\",\r\n    \"author\": \"authorString\",\r\n    \"year\": 1987\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "/search",
+              "path": [
+                "search"
+              ]
+            }
+          },
+          "_postman_previewlanguage": "json",
+          "header": null,
+          "cookie": [],
+          "body": "{\r\n    \"author\":\"author\",\r\n    \"title\": \"title\",\r\n    \"publisher\": \"publisher\",\r\n    \"releaseYear\": 1987,\r\n    \"available\": \"2023-05-23\"\r\n}"
+        },
+        {
+          "name": "not found",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"titleString\",\r\n    \"author\": \"authorString\",\r\n    \"year\": 1987\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "/search",
+              "path": [
+                "search"
+              ]
+            }
+          },
+          "_postman_previewlanguage": "json",
+          "header": null,
+          "cookie": [],
+          "body": "{\r\n    \"status\":\"error\",\r\n    \"message\" : \"Book not found\"\r\n}"
+        }
+      ]
+    },
+    {
+      "name": "add",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"isbn\": \"10DigitIsbn\",\r\n    \"title\": \"title\",\r\n    \"author\": \"author\",\r\n    \"publisher\": \"publisher\",\r\n    \"year\": \"releaseYear\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "books/add",
+          "host": [
+            "books"
+          ],
+          "path": [
+            "add"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "add",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"isbn\": \"10DigitIsbn\",\r\n    \"title\": \"title\",\r\n    \"author\": \"author\",\r\n    \"publisher\": \"publisher\",\r\n    \"year\": \"releaseYear\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "books/add",
+              "host": [
+                "books"
+              ],
+              "path": [
+                "add"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": null,
+          "cookie": [],
+          "body": "redirect to /add"
+        },
+        {
+          "name": "couldn't save",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"isbn\": \"10DigitIsbn\",\r\n    \"title\": \"title\",\r\n    \"author\": \"author\",\r\n    \"publisher\": \"publisher\",\r\n    \"year\": \"releaseYear\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "books/add",
+              "host": [
+                "books"
+              ],
+              "path": [
+                "add"
+              ]
+            }
+          },
+          "status": "Internal Server Error",
+          "code": 500,
+          "_postman_previewlanguage": "json",
+          "header": null,
+          "cookie": [],
+          "body": "{\n    \"status\": \"error\",\n    \"message\": \"couldn't add book to database please try again later or contact IT\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "modify",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"isbn\":\"10DigitIsbn\",\r\n    \"title\": \"title\",\r\n    \"author\": \"author\",\r\n    \"year\": \"releaseYear\",\r\n    \"availabilty\":\"available/only for viewing/being restored/\",\r\n    \"member\":\"member_id\",\r\n    \"returnDate\":\"2022-07-16\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "books/:bookId",
+          "host": [
+            "books"
+          ],
+          "path": [
+            ":bookId"
+          ],
+          "variable": [
+            {
+              "key": "bookId",
+              "value": null,
+              "description": "put the bookId here"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "modify",
+          "originalRequest": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"isbn\":\"10DigitIsbn\",\r\n    \"title\": \"title\",\r\n    \"author\": \"author\",\r\n    \"year\": \"releaseYear\",\r\n    \"availabilty\":\"available/only for viewing/being restored/\",\r\n    \"member\":\"member_id\",\r\n    \"returnDate\":\"2022-07-16\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "books/:bookId",
+              "host": [
+                "books"
+              ],
+              "path": [
+                ":bookId"
+              ],
+              "variable": [
+                {
+                  "key": "bookId",
+                  "value": null,
+                  "description": "put the bookId here"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "text",
+          "header": null,
+          "cookie": [],
+          "body": "redirects to: /search"
+        },
+        {
+          "name": "couldn't modify",
+          "originalRequest": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"isbn\":\"10DigitIsbn\",\r\n    \"title\": \"title\",\r\n    \"author\": \"author\",\r\n    \"year\": \"releaseYear\",\r\n    \"availabilty\":\"available/only for viewing/being restored/\",\r\n    \"member\":\"member_id\",\r\n    \"returnDate\":\"2022-07-16\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "books/:bookId",
+              "host": [
+                "books"
+              ],
+              "path": [
+                ":bookId"
+              ],
+              "variable": [
+                {
+                  "key": "bookId",
+                  "value": null,
+                  "description": "put the bookId here"
+                }
+              ]
+            }
+          },
+          "status": "Internal Server Error",
+          "code": 500,
+          "_postman_previewlanguage": "json",
+          "header": null,
+          "cookie": [],
+          "body": "{\r\n    \"status\" : \"error\",\r\n    \"message\" : \"couldn't save modifications please try again later or contact IT\"\r\n}"
+        }
+      ]
+    },
+    {
+      "name": "delete",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "books/:bookId",
+          "host": [
+            "books"
+          ],
+          "path": [
+            ":bookId"
+          ],
+          "variable": [
+            {
+              "key": "bookId",
+              "value": null,
+              "description": "put bookId here"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "failed",
+          "originalRequest": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "books/:bookId",
+              "host": [
+                "books"
+              ],
+              "path": [
+                ":bookId"
+              ],
+              "variable": [
+                {
+                  "key": "bookId",
+                  "value": null,
+                  "description": "put bookId here"
+                }
+              ]
+            }
+          },
+          "status": "Internal Server Error",
+          "code": 500,
+          "_postman_previewlanguage": null,
+          "header": null,
+          "cookie": [],
+          "body": "{\r\n    \"status\" : \"error\",\r\n    \"message\" : \"couldn't delete book please try again later or contact IT\"\r\n}"
+        },
+        {
+          "name": "delete",
+          "originalRequest": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "books/:bookId",
+              "host": [
+                "books"
+              ],
+              "path": [
+                ":bookId"
+              ],
+              "variable": [
+                {
+                  "key": "bookId",
+                  "value": null,
+                  "description": "put bookId here"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": null,
+          "cookie": [],
+          "body": "redirect to /search"
+        }
+      ]
+    },
+    {
+      "name": "New Request",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "/users",
+          "path": [
+            "users"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
